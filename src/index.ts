@@ -1,11 +1,6 @@
-import fs from 'fs';
-
+import { MatchAggregator } from './model/MatchAggregator';
 const filename = 'input/sample-input.txt';
 
-const lines = fs
-  .readFileSync(filename, {
-    encoding: 'utf-8'
-  })
-  .split('\n');
+const agg = new MatchAggregator(filename);
 
-console.log(lines);
+console.log(agg.data);
