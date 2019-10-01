@@ -1,0 +1,23 @@
+{
+  "name": "jane-soccer",
+  "version": "1.0.0",
+  "description": "Jane Technologies take home assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RadicalRoy/jane-soccer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RadicalRoy/jane-soccer/issues"
+  },
+  "homepage": "https://github.com/RadicalRoy/jane-soccer#readme",
+  "dependencies": {
+    "@types/node": "^12.7.8"
+  }
+}
