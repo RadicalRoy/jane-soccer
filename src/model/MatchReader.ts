@@ -13,6 +13,11 @@ export type TeamMatchData = {
   opponent: string;
 };
 
+export type TeamScore = {
+  score: number;
+  name: string;
+};
+
 export class MatchReader {
   // Track data by team using an array to represent sequential days of data
   // simple rolling aggregate later
@@ -40,7 +45,6 @@ export class MatchReader {
     lines.forEach(line => {
       const [team1, team2] = line.split(', ');
 
-      console.log(team1);
       // parse name and score
       const team1Score = this.getTeamScore(team1);
       const team2Score = this.getTeamScore(team2);
@@ -73,7 +77,7 @@ export class MatchReader {
     });
   };
 
-  private getTeamScore = (team: string): { name: string; score: number } => {
+  private getTeamScore = (team: string): TeamScore => {
     const teamArr = team.split(' ');
     const score = parseInt(teamArr[teamArr.length - 1]); // score is last entry
     teamArr.pop(); // remove score

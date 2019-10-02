@@ -1,13 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs_1 = __importDefault(require("fs"));
+var MatchAggregator_1 = require("./model/MatchAggregator");
 var filename = 'input/sample-input.txt';
-var lines = fs_1.default
-    .readFileSync(filename, {
-    encoding: 'utf-8'
-})
-    .split('\n');
-console.log(lines);
+var agg = new MatchAggregator_1.MatchAggregator(filename);
+console.log(agg.matchAggs);

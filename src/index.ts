@@ -3,4 +3,4 @@ const filename = 'input/sample-input.txt';
 
 const agg = new MatchAggregator(filename);
 
-console.log(agg.data);
+//console.log(agg.matchAggs);
