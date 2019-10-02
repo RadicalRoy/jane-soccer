@@ -24,9 +24,16 @@ var MatchAggregator = /** @class */ (function () {
         };
         // might make more sense in its own Reporter class
         this.reportRanks = function () {
+            var report = '';
             for (var i = 0; i < _this.days; i++) {
-                console.log(i, ' ', _this.dayRank(i));
+                var dayRanks = _this.dayRank(i);
+                report += "Matchday " + (i + 1) + " \n";
+                for (var j = 0; j < 3; j++) {
+                    report += dayRanks[j].name + ", " + dayRanks[j].score + " pts \n";
+                }
+                report += '\n';
             }
+            return report;
         };
         // get rankings for the day and return array of top 3 teams
         this.dayRank = function (day) {
@@ -35,18 +42,25 @@ var MatchAggregator = /** @class */ (function () {
                 dayArr.push({ score: _this.matchAggs[team][day], name: team });
             }
             dayArr.sort(function (team1, team2) {
-                if (team1.score > team2.score)
-                    return 1;
-                if (team1.score < team2.score)
+                if (team1.score > team2.score) {
                     return -1;
-                if (team1.score === team2.score)
+                }
+                else if (team1.score < team2.score) {
+                    return 1;
+                }
+                else {
                     return team1.name > team2.name ? 1 : -1;
+                }
             });
             return dayArr.slice(0, 3);
         };
         this.matchReader = new MatchReader_1.MatchReader(fileName);
         this.calcDaySums();
+        console.log(this.reportRanks());
     }
+    MatchAggregator.fromTxt = function (fileName) {
+        return new MatchAggregator(fileName);
+    };
     Object.defineProperty(MatchAggregator.prototype, "data", {
         get: function () {
             return this.matchReader.data;

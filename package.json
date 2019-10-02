@@ -4,7 +4,10 @@
   "description": "Jane Technologies take home assignment",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node build/index.js",
+    "start:ts": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
