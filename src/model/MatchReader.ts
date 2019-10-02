@@ -13,6 +13,7 @@ export type TeamMatchData = {
   opponent: string;
 };
 
+// Intermediate object with team name and score
 export type TeamScore = {
   score: number;
   name: string;
@@ -25,12 +26,11 @@ export class MatchReader {
   data: { [teamName: string]: TeamMatchData[] } = {};
 
   constructor(public fileName: string) {
-    this.parseFile(fileName);
+    this.read(fileName);
+    this.parseRaw();
   }
 
-  // can probably be broken up further
-  parseFile = (fileName: string): void => {
-    // Read file and split by newline
+  read = (fileName: string): void => {
     const lines = fs
       .readFileSync(fileName, {
         encoding: 'utf-8'
@@ -38,11 +38,13 @@ export class MatchReader {
       .split('\n')
       .filter(line => line != ''); // empty lines
 
-    // save raw
+    // save raw data
     this.raw = lines;
+  };
 
-    // Read each line (match) into data object
-    lines.forEach(line => {
+  parseRaw = (): void => {
+    // Read each line (match) into TeamMatchData object
+    this.raw.forEach(line => {
       const [team1, team2] = line.split(', ');
 
       // parse name and score
@@ -77,6 +79,7 @@ export class MatchReader {
     });
   };
 
+  // helper function to parse raw text
   private getTeamScore = (team: string): TeamScore => {
     const teamArr = team.split(' ');
     const score = parseInt(teamArr[teamArr.length - 1]); // score is last entry
@@ -86,7 +89,7 @@ export class MatchReader {
     return { name, score };
   };
 
-  // returns the result of the first team
+  // returns the match result for the first team
   private compareScores = (t1Score: number, t2Score: number): MatchResult => {
     const result = t1Score > t2Score ? 'W' : t1Score === t2Score ? 'T' : 'L';
     return MatchResult[result];

@@ -7,6 +7,10 @@ export type MatchAggs = {
 };
 
 export class MatchAggregator {
+  static fromTxt(fileName: string): MatchAggregator {
+    return new MatchAggregator(fileName);
+  }
+
   matchReader: MatchReader;
   matchAggs: MatchAggs = {};
   days: number = 0;
@@ -14,7 +18,7 @@ export class MatchAggregator {
   constructor(public fileName: string) {
     this.matchReader = new MatchReader(fileName);
     this.calcDaySums();
-    this.reportRanks();
+    console.log(this.reportRanks());
   }
 
   get data() {
@@ -22,7 +26,7 @@ export class MatchAggregator {
   }
 
   calcDaySums = (): void => {
-    for (let team in this.data) {
+    for (const team in this.data) {
       const runTotals: number[] = [];
 
       this.data[team].reduce((acc, ele) => {
@@ -39,20 +43,22 @@ export class MatchAggregator {
   };
 
   // might make more sense in its own Reporter class
-  reportRanks = (): void => {
+  reportRanks = (): string => {
     let report = '';
 
     for (let i = 0; i < this.days; i++) {
       const dayRanks = this.dayRank(i);
 
       report += `Matchday ${i + 1} \n`;
+
       for (let j = 0; j < 3; j++) {
         report += `${dayRanks[j].name}, ${dayRanks[j].score} pts \n`;
       }
+
       report += '\n';
     }
 
-    console.log(report);
+    return report;
   };
 
   // get rankings for the day and return array of top 3 teams
