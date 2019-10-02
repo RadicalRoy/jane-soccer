@@ -4,7 +4,7 @@
   "description": "Jane Technologies take home assignment",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "tsc",
     "start": "node build/index.js",
     "start:ts": "ts-node src/index.ts"
@@ -22,5 +22,11 @@
   "homepage": "https://github.com/RadicalRoy/jane-soccer#readme",
   "dependencies": {
     "@types/node": "^12.7.8"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.3"
   }
 }
