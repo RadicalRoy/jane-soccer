@@ -4,7 +4,7 @@ Jane Technologies take home assignment
 
 # Setup
 
-You will need globally installed versions of `node`, `typescript`, `ts-node` to run the npm scripts
+You will need globally installed versions of `node`, `typescript`, `ts-node`, `jest` to run the npm scripts
 
 Node
 <https://nodejs.org/en/download/>
@@ -14,6 +14,8 @@ Then use the following command(s) to globally install typescript:
 `npm install -g typescript`
 
 `npm install -g ts-node`
+
+`npm install -g jest`
 
 Depending on your environment configuration, you may need to symlink or update the PATH to use these globally.
 
@@ -49,4 +51,4 @@ You can enter a file name with `.txt` extension to be processed by the program.
 
 A valid file will log rankings by match day for a soccer league to the terminal.
 
-Absolute file path will work. Though you may drop your text file in the input folder from the root directory and specify the relative path (e.g. `input\sample-input.txt`).
+Absolute file path will work. Though you may also drop your text file in the input folder from the root directory and specify the relative path (e.g. `input\sample-input.txt`).
