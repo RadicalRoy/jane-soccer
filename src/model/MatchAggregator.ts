@@ -8,6 +8,8 @@ export type MatchAggs = {
 
 export class MatchAggregator {
   static fromTxt(fileName: string): MatchAggregator {
+    if (fileName.indexOf('.txt') < 0)
+      throw new Error('Expected .txt extension');
     return new MatchAggregator(fileName);
   }
 

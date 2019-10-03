@@ -14,7 +14,7 @@ console.log('=================================================\n');
 console.log('Welcome to the Jane Technologies Soccer Match Aggregator!\n');
 console.log("Type 'exit' at any time to close the program.\n");
 console.log('=================================================\n');
-rl.question('Enter name of txt file with match data: ', prompt);
+rl.question('Enter name of text file with match data: ', prompt);
 function prompt(input) {
     if (input.toLowerCase() === 'exit') {
         rl.close();

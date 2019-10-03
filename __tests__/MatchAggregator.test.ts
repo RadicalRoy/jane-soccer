@@ -18,4 +18,9 @@ describe('MatchAggregator produces correct aggregates for given file', () => {
   });
 });
 
-describe('', () => {});
+describe('MatchAggregator throws error', () => {
+  it('fromTxt error if not a txt file', () => {
+    const sampleFile = 'bad.txe';
+    expect(() => MatchAggregator.fromTxt(sampleFile)).toThrowError();
+  });
+});

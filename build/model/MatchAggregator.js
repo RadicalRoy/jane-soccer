@@ -56,9 +56,12 @@ var MatchAggregator = /** @class */ (function () {
         };
         this.matchReader = new MatchReader_1.MatchReader(fileName);
         this.calcDaySums();
+        // would likely move to its own print/report function
         console.log(this.reportRanks());
     }
     MatchAggregator.fromTxt = function (fileName) {
+        if (fileName.indexOf('.txt') < 0)
+            throw new Error('Expected .txt extension');
         return new MatchAggregator(fileName);
     };
     Object.defineProperty(MatchAggregator.prototype, "data", {
