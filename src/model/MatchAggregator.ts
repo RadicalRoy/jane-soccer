@@ -18,6 +18,8 @@ export class MatchAggregator {
   constructor(public fileName: string) {
     this.matchReader = new MatchReader(fileName);
     this.calcDaySums();
+
+    // would likely move to its own print/report function
     console.log(this.reportRanks());
   }
 
