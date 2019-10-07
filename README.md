@@ -52,3 +52,13 @@ You can enter a file name with `.txt` extension to be processed by the program.
 A valid file will log rankings by match day for a soccer league to the terminal.
 
 Absolute file path will work. Though you may also drop your text file in the input folder from the root directory and specify the relative path (e.g. `input\sample-input.txt`).
+
+# To Do
+
+- Mock fs file read for true unit testing of read function in MatchReader.test.ts
+
+- Implement print functionality to a MatchReporter class and give MatchAggregator a MatchReporter property for more modular code (for when we want to write results to something other than stdout)
+
+  - MatchReporter class could inherit from an abstract Reporter class with abstract `report` method. May improve code reusability.
+
+- MatchReader could inherit from an abstract Reader class with abstract `read` method. May improve code reusability.
